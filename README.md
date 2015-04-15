@@ -2,7 +2,7 @@
 CSCI 2270 Recitation 10
 
 Project Summary
-	The program is a single-player game, where the player must get from
+	The program is a single-player text game, where the player must get from
 	Boulder to DisneyLand. They player is a struct to keep track of coins and lives. 
 	The player travels along a double linked-list. Each node on the list is a struct
 	with different information about what happens to the player at the node.
@@ -15,5 +15,13 @@ How to Run
 	to the project documentation file will be uploaded after Phase2. 
 Dependencies
 	There are no dependencies.
+System Requirements
+	This program is designed for Linux and uses the g++ compiler.
+Group Members
+	Michelle Ferrall and Aubree Lytwyn
+Contributors
+	Contributors will be finalized after phase 3.
+Open issues/bugs
+	This will be completed after phase 2. 
 
 

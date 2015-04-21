@@ -154,3 +154,11 @@ void Game::buildGame(){
 	spot23->next = spot24;
 
 }
+
+
+int Game::rollDie()
+{
+	int roll = 0;
+	roll = rand() % 6 +1;
+	return roll;
+}

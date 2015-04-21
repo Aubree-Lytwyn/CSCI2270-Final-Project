@@ -76,8 +76,81 @@ void Game::buildGame(){
 	spot10->next=spot11;
 	
 	location* spot12 = new location;
-	spot12->position=12;
-	spot->name="en route";
-	spot9->prev=spot8;
-	spot8->next=spot9;
+	spot12->position = 12;
+	spot12->name = "en route";
+	spot12->prev = spot11;
+	spot11->next = spot12;
+
+	location* spot13 = new location;
+	spot13->position = 13;
+	spot13->name = "en route";
+	spot13->prev = spot12;
+	spot12->next = spot13;
+
+	location* spot14 = new location;
+	spot14->position = 14;
+	spot14->name = "Las Vegas, NV";
+	spot14->prev = spot13;
+	spot13->next = spot14;
+
+	location* spot15 = new location;
+	spot15->position = 15;
+	spot15->name = "en route";
+	spot15->prev = spot14;
+	spot14->next = spot15;
+
+	location* spot16 = new location;
+	spot16->position = 16;
+	spot16->name = "en route";
+	spot16->prev = spot15;
+	spot15->next = spot16;
+
+	location* spot17 = new location;
+	spot17->position = 17;
+	spot17->name = "Mojave Desert, CA";
+	spot17->prev = spot16;
+	spot16->next = spot17;
+
+	location* spot18 = new location;
+	spot18->position = 18;
+	spot18->name = "en route";
+	spot18->prev = spot17;
+	spot17->next = spot18;
+
+	location* spot19 = new location;
+	spot19->position = 19;
+	spot19->name = "Death Valley, CA";
+	spot19->prev = spot18;
+	spot18->next = spot19;
+
+	location* spot20 = new location;
+	spot20->position = 20;
+	spot20->name = "en route";
+	spot20->prev = spot19;
+	spot19->next = spot20;
+
+	location* spot21 = new location;
+	spot21->position = 21;
+	spot21->name = "en route";
+	spot21->prev = spot20;
+	spot20->next = spot21;
+
+	location* spot22 = new location;
+	spot22->position = 22;
+	spot22->name = "Santa Monica, CA";
+	spot22->prev = spot21;
+	spot21->next = spot22;
+
+	location* spot23 = new location;
+	spot23->position = 23;
+	spot23->name = "en route";
+	spot23->prev = spot22;
+	spot22->next = spot23;
+
+	location* spot24 = new location;
+	spot24->position = 24;
+	spot24->name = "en route";
+	spot24->prev = spot23;
+	spot23->next = spot24;
+
 }

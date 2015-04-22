@@ -6,21 +6,22 @@ using namespace std;
 
 int main(){
 	location* playerLocation = new location;
+	player* thePlayer = new player;
 	int rollSum = 0;
 	string userResponse;
 	
 	Game g; 
-	//location* temp = new location;
 	cout<<"You are in Boulder. Do you want to go to DisneyLand? (yes or no)"<<endl;
 	getline(cin, userResponse);
 	if (userResponse== "yes"){
 		playerLocation = g.buildGame();
 		//print out starting city info
 		while (userResponse != "no"){
+			g.increaseMoves();
 			if (userResponse == "yes"){
 				
 				playerLocation = g.movePlayer(playerLocation, rollSum); 
-				
+				g.printLocationInfo(playerLocation, thePlayer);
 				cout<<"Player Location is: "<<playerLocation->position<<endl;
 			}
 			else{

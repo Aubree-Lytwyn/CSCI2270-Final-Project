@@ -3,19 +3,22 @@
 #define GAME_H
 
 struct player{
-	int money=0;
+	int money=100;
 	int lives=3;
 	int stops=0;
-	//location* playerLocation;
-	
 };
 
 struct location{
 	int position;
 	std::string name;
-	
 	location* next;
 	location* prev;
+	std::string message;
+	bool getMoney;
+	bool loseMoney;
+	bool playerDeath;
+	bool playerLost;
+	int changeInMoney;
 };
 
 class Game{
@@ -25,8 +28,15 @@ class Game{
 		location* buildGame();
 		int rollDie();
 		location* movePlayer(location* temp, int rollSum);
-		void printLocationInfo();
+		void printLocationInfo(location* playerLocation, player* thePlayer);
+		void getLocationInfo(location* playerLocation, player* thePlayer);
+		void addPlayerMoney(player* thePlayer, int amount);
+		void subtractPlayerMoney(player* thePlayer, int amount);
+		void restartPlayer(player* thePlayer);
+		void getPlayerInfo(player* thePlayer);
+		void increaseMoves();
 	private:
+		int numberMoves=0;
 		
 };
 #endif

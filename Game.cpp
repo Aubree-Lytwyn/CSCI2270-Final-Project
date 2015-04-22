@@ -34,7 +34,7 @@ location* Game::buildGame(){
 	spot2->playerLost=false;
 	spot2->changeInMoney = 100;
 	
-	location* temp = spot1;
+	startingLocation = spot1;
 	
 	location* spot3 = new location;
 	spot3->position=3;
@@ -44,7 +44,7 @@ location* Game::buildGame(){
 	spot3->message= "You are lost! Go back to the beginning.";
 	spot3->getMoney=false;
 	spot3->loseMoney=false;
-	spot3->playerDeath=false;
+	spot3->playerDeath=true;
 	spot3->playerLost=true;
 	spot3->changeInMoney = 0;
 	
@@ -102,8 +102,8 @@ location* Game::buildGame(){
 	spot8->prev=spot7;
 	spot7->next=spot8;
 	spot8->message="You rented a house boat.";
-	spot8->getMoney=true;
-	spot8->loseMoney=false;
+	spot8->getMoney=false;
+	spot8->loseMoney=true;
 	spot8->playerDeath=false;
 	spot8->playerLost=false;
 	spot8->changeInMoney = 500;
@@ -299,7 +299,7 @@ location* Game::buildGame(){
 	spot24->playerDeath=false;
 	spot24->playerLost=false;
 	spot24->changeInMoney = 0;
-	return temp;
+	return startingLocation;
 }
 
 
@@ -325,10 +325,14 @@ location* Game::movePlayer(location* playerLocation, int rollSum)
 }
 
 void Game::printLocationInfo(location* playerLocation, player* thePlayer){
+	
+	
 	cout<<"Player Location: "<<playerLocation->name<<endl;
 	cout<<"Spot "<<playerLocation->position<<" out of 24."<<endl;
 	cout<<playerLocation->message<<endl;
 	getLocationInfo(playerLocation, thePlayer);
+	
+	
 }
 
 void Game::getLocationInfo(location* playerLocation, player* thePlayer){
@@ -339,11 +343,14 @@ void Game::getLocationInfo(location* playerLocation, player* thePlayer){
 		subtractPlayerMoney(thePlayer, playerLocation->changeInMoney);
 	}
 	if(playerLocation->playerDeath==true){
-		restartPlayer(thePlayer);
+		playerLocation = restartPlayer(thePlayer, playerLocation);
+		cout<<"Player Location is: "<<playerLocation->position<<endl;
+		//cout<<"here"<<endl;
 	}
 	if(playerLocation->playerLost==true){
-		restartPlayer(thePlayer);
+		restartPlayer(thePlayer, playerLocation);
 	}
+	
 }
 
 void Game::addPlayerMoney(player* thePlayer, int amount){
@@ -356,8 +363,10 @@ void Game::subtractPlayerMoney(player* thePlayer, int amount){
 	cout<<"You lost $"<<amount<<" :("<<endl;
 }
 
-void Game::restartPlayer(player* thePlayer){
+location* Game::restartPlayer(player* thePlayer, location* playerLocation){
 	
+	playerLocation = startingLocation;
+	return playerLocation;
 }
 
 void Game::getPlayerInfo(player* thePlayer){

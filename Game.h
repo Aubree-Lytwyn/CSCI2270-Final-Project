@@ -2,6 +2,8 @@
 #ifndef GAME_H
 #define GAME_H
 
+//using namespace std;
+
 struct player{
 	int money=100;
 	int lives=3;
@@ -32,11 +34,11 @@ class Game{
 		void getLocationInfo(location* playerLocation, player* thePlayer);
 		void addPlayerMoney(player* thePlayer, int amount);
 		void subtractPlayerMoney(player* thePlayer, int amount);
-		void restartPlayer(player* thePlayer);
+		location* restartPlayer(player* thePlayer, location* playerLocation);
 		void getPlayerInfo(player* thePlayer);
 		void increaseMoves();
 	private:
 		int numberMoves=0;
-		
+		location* startingLocation;
 };
 #endif

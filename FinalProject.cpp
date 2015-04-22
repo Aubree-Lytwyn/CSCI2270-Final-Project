@@ -22,7 +22,7 @@ int main(){
 				
 				playerLocation = g.movePlayer(playerLocation, rollSum); 
 				g.printLocationInfo(playerLocation, thePlayer);
-				cout<<"Player Location is: "<<playerLocation->position<<endl;
+				
 			}
 			else{
 				cout<<"Please enter yes or no."<<endl; // fix later

@@ -5,25 +5,41 @@
 using namespace std;
 
 int main(){
-	//player* thePlayer;
-	int roll = 0;
+	location* playerLocation = new location;
+	int rollSum = 0;
 	string userResponse;
+	
 	Game g; 
+	//location* temp = new location;
 	cout<<"You are in Boulder. Do you want to go to DisneyLand? (yes or no)"<<endl;
 	getline(cin, userResponse);
 	if (userResponse== "yes"){
-		g.buildGame();
+		playerLocation = g.buildGame();
 		//print out starting city info
 		while (userResponse != "no"){
 			if (userResponse == "yes"){
-				roll = g.rollDie();
+				
+				playerLocation = g.movePlayer(playerLocation, rollSum); 
+				
+				cout<<"Player Location is: "<<playerLocation->position<<endl;
 			}
 			else{
 				cout<<"Please enter yes or no."<<endl; // fix later
 			}
-			cout<<"Do you want to continue? (yes or no)"<<endl; 
-			getline(cin, userResponse);
+			if(playerLocation->position == 24)
+			{
+				userResponse = "no";
+			}
+			else
+			{
+				cout<<"Do you want to continue? (yes or no)"<<endl; 
+				getline(cin, userResponse);
+			}
 		}
+	}
+	if(playerLocation->position == 24)
+	{
+		cout<<"You made it to DisneyLand!"<<endl;
 	}
 	cout<<"Goodbye!"<<endl;
 }

@@ -9,7 +9,8 @@ Game::Game(){
 Game::~Game(){
 }
 
-void Game::buildGame(){
+location* Game::buildGame(){
+	
 	location* spot1 = new location;
 	spot1->position=1;
 	spot1->name="Boulder, CO";
@@ -20,6 +21,8 @@ void Game::buildGame(){
 	spot2->name="en route";
 	spot2->prev=spot1;
 	spot1->next=spot2;
+	
+	location* temp = spot1;
 	
 	location* spot3 = new location;
 	spot3->position=3;
@@ -152,7 +155,7 @@ void Game::buildGame(){
 	spot24->name = "en route";
 	spot24->prev = spot23;
 	spot23->next = spot24;
-
+	return temp;
 }
 
 
@@ -161,4 +164,18 @@ int Game::rollDie()
 	int roll = 0;
 	roll = rand() % 6 +1;
 	return roll;
+}
+
+location* Game::movePlayer(location* playerLocation, int rollSum)
+{
+	int roll = 0;
+	roll = rollDie();
+	rollSum = (playerLocation->position) + roll;
+	
+	while(playerLocation->position != rollSum && playerLocation->position<24)
+	{
+		playerLocation = playerLocation->next;
+	}	
+
+	return playerLocation;	
 }

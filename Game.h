@@ -22,8 +22,9 @@ class Game{
 	public:
 		Game();
 		~Game();
-		void buildGame();
+		location* buildGame();
 		int rollDie();
+		location* movePlayer(location* temp, int rollSum);
 		void printLocationInfo();
 	private:
 		

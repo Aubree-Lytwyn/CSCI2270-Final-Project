@@ -1,4 +1,4 @@
-# hairy-spice
+# CSCI2270-Final-Project
 CSCI 2270 Recitation 10
 
 Project Summary

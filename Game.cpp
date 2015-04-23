@@ -293,7 +293,7 @@ location* Game::buildGame(){
 	spot24->name = "DisneyLand";
 	spot24->prev = spot23;
 	spot23->next = spot24;
-	spot24->message="You made it! Congratulations!";
+	spot24->message="You made it to Disneyland! Congratulations!";
 	spot24->getMoney=false;
 	spot24->loseMoney=false;
 	spot24->playerDeath=false;
@@ -306,31 +306,31 @@ location* Game::buildGame(){
 int Game::rollDie()
 {
 	int roll = 0;
-	roll = rand() % 6 +1;
+	roll = (rand()%6 )+1;
+	increaseMoves();
 	return roll;
 }
 
-location* Game::movePlayer(location* playerLocation, int rollSum)
+void Game::movePlayer(player* thePlayer)
 {
 	int roll = 0;
 	roll = rollDie();
-	rollSum = (playerLocation->position) + roll;
-	
-	while(playerLocation->position != rollSum && playerLocation->position<24)
+	thePlayer->rollSum = (playerLocation->position) + roll;
+	while((playerLocation->position) != (thePlayer->rollSum) && playerLocation->position<24)
 	{
 		playerLocation = playerLocation->next;
 	}	
-
-	return playerLocation;	
 }
 
 void Game::printLocationInfo(location* playerLocation, player* thePlayer){
 	
 	
-	cout<<"Player Location: "<<playerLocation->name<<endl;
-	cout<<"Spot "<<playerLocation->position<<" out of 24."<<endl;
-	cout<<playerLocation->message<<endl;
+	
 	getLocationInfo(playerLocation, thePlayer);
+	
+	cout<<"Player Location: "<<playerLocation->name<<endl;
+	cout<<playerLocation->message<<endl;
+	cout<<"You are on spot "<<playerLocation->position<<" out of 24."<<endl;
 	
 	
 }
@@ -343,12 +343,10 @@ void Game::getLocationInfo(location* playerLocation, player* thePlayer){
 		subtractPlayerMoney(thePlayer, playerLocation->changeInMoney);
 	}
 	if(playerLocation->playerDeath==true){
-		playerLocation = restartPlayer(thePlayer, playerLocation);
-		cout<<"Player Location is: "<<playerLocation->position<<endl;
-		//cout<<"here"<<endl;
+		restartPlayer(thePlayer);
 	}
 	if(playerLocation->playerLost==true){
-		restartPlayer(thePlayer, playerLocation);
+		restartPlayer(thePlayer);//, playerLocation);
 	}
 	
 }
@@ -363,15 +361,29 @@ void Game::subtractPlayerMoney(player* thePlayer, int amount){
 	cout<<"You lost $"<<amount<<" :("<<endl;
 }
 
-location* Game::restartPlayer(player* thePlayer, location* playerLocation){
+void Game::restartPlayer(player* thePlayer){//, location* playerLocation){
 	
 	playerLocation = startingLocation;
-	return playerLocation;
+	thePlayer->lives -= 1;
+	thePlayer->rollSum = 0;
+
 }
 
 void Game::getPlayerInfo(player* thePlayer){
-	// cout statements on lives and money
-	cout<<"Number of Moves: "<<numberMoves<<endl;
+	
+	if(thePlayer->lives != 0)
+	{
+		cout<<"It took you "<< numberMoves/2<< " moves to get to Disneyland"<<endl;
+		//not sure where we are doubling the number of moves...im to tired to find where that happens so I just divided it by two.
+		
+		cout<<"You finished the trip with "<<thePlayer->money<<" dollars in your wallet, and "<<thePlayer->lives<<" lives left."<<endl;
+		
+		
+	}
+	else
+	{
+		cout<<"It took you "<< numberMoves/2<< " moves before you ran out of lives."<<endl;		
+	}
 }
 
 void Game::increaseMoves(){

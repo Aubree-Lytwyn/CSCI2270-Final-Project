@@ -15,7 +15,7 @@ location* Game::buildGame(){
 	spot1->position=1;
 	spot1->name="Boulder, CO";
 	spot1->prev=NULL;
-	string message = "This is your starting location.";
+	spot1->message = "This is your starting location.";
 	spot1->getMoney=false;
 	spot1->loseMoney=false;
 	spot1->playerDeath=false;
@@ -27,7 +27,7 @@ location* Game::buildGame(){
 	spot2->name="en route";
 	spot2->prev=spot1;
 	spot1->next=spot2;
-	spot2->message = "You gained $100.";
+	spot2->message = "You earned some money!";
 	spot2->getMoney=true;
 	spot2->loseMoney=false;
 	spot2->playerDeath=false;
@@ -53,7 +53,7 @@ location* Game::buildGame(){
 	spot4->name="en route";
 	spot4->prev=spot3;
 	spot3->next=spot4;
-	spot4->message="You gained $100.";
+	spot4->message="You earned some money!";
 	spot4->getMoney=true;
 	spot4->loseMoney=false;
 	spot4->playerDeath=false;
@@ -65,7 +65,7 @@ location* Game::buildGame(){
 	spot5->name="en route";
 	spot5->prev=spot4;
 	spot4->next=spot5;
-	spot5->message="You gained $100.";
+	spot5->message="You earned some money!";
 	spot5->getMoney=true;
 	spot5->loseMoney=false;
 	spot5->playerDeath=false;
@@ -89,7 +89,7 @@ location* Game::buildGame(){
 	spot7->name="en route";
 	spot7->prev=spot6;
 	spot6->next=spot7;
-	spot7->message="You gained $100.";
+	spot7->message="You earned some money!";
 	spot7->getMoney=true;
 	spot7->loseMoney=false;
 	spot7->playerDeath=false;
@@ -113,7 +113,7 @@ location* Game::buildGame(){
 	spot9->name="en route";
 	spot9->prev=spot8;
 	spot8->next=spot9;
-	spot9->message="You gained $100.";
+	spot9->message="You earned some money!";
 	spot9->getMoney=true;
 	spot9->loseMoney=false;
 	spot9->playerDeath=false;
@@ -125,7 +125,7 @@ location* Game::buildGame(){
 	spot10->name="en route";
 	spot10->prev=spot9;
 	spot9->next=spot10;
-	spot10->message="You gained $100.";
+	spot10->message="You earned some money!";
 	spot10->getMoney=true;
 	spot10->loseMoney=false;
 	spot10->playerDeath=false;
@@ -161,7 +161,7 @@ location* Game::buildGame(){
 	spot13->name = "en route";
 	spot13->prev = spot12;
 	spot12->next = spot13;
-	spot13->message="You gained $100.";
+	spot13->message="You earned some money!";
 	spot13->getMoney=true;
 	spot13->loseMoney=false;
 	spot13->playerDeath=false;
@@ -185,7 +185,7 @@ location* Game::buildGame(){
 	spot15->name = "en route";
 	spot15->prev = spot14;
 	spot14->next = spot15;
-	spot15->message="You gained $100.";
+	spot15->message="You earned some money!";
 	spot15->getMoney=true;
 	spot15->loseMoney=false;
 	spot15->playerDeath=false;
@@ -197,7 +197,7 @@ location* Game::buildGame(){
 	spot16->name = "en route";
 	spot16->prev = spot15;
 	spot15->next = spot16;
-	spot16->message="You gained $100.";
+	spot16->message="You earned some money!";
 	spot16->getMoney=true;
 	spot16->loseMoney=false;
 	spot16->playerDeath=false;
@@ -221,7 +221,7 @@ location* Game::buildGame(){
 	spot18->name = "en route";
 	spot18->prev = spot17;
 	spot17->next = spot18;
-	spot18->message="You gained $100.";
+	spot18->message="You earned some money!";
 	spot18->getMoney=true;
 	spot18->loseMoney=false;
 	spot18->playerDeath=false;
@@ -245,7 +245,7 @@ location* Game::buildGame(){
 	spot20->name = "en route";
 	spot20->prev = spot19;
 	spot19->next = spot20;
-	spot20->message="You gained $100.";
+	spot20->message="You earned some money!";
 	spot20->getMoney=true;
 	spot20->loseMoney=false;
 	spot20->playerDeath=false;
@@ -257,7 +257,7 @@ location* Game::buildGame(){
 	spot21->name = "en route";
 	spot21->prev = spot20;
 	spot20->next = spot21;
-	spot21->message="You gained $100.";
+	spot21->message="You earned some money!";
 	spot21->getMoney=true;
 	spot21->loseMoney=false;
 	spot21->playerDeath=false;
@@ -281,7 +281,7 @@ location* Game::buildGame(){
 	spot23->name = "en route";
 	spot23->prev = spot22;
 	spot22->next = spot23;
-	spot23->message="You gained $100.";
+	spot23->message="You earned some money!";
 	spot23->getMoney=true;
 	spot23->loseMoney=false;
 	spot23->playerDeath=false;
@@ -325,7 +325,7 @@ void Game::movePlayer(player* thePlayer)
 void Game::printLocationInfo(location* playerLocation, player* thePlayer){
 	
 	
-	
+	cout<<"~~~~~ Turn #"<<numberMoves<<" ~~~~~"<<endl;
 	getLocationInfo(playerLocation, thePlayer);
 	
 	cout<<"Player Location: "<<playerLocation->name<<endl;
@@ -357,12 +357,16 @@ void Game::addPlayerMoney(player* thePlayer, int amount){
 }
 
 void Game::subtractPlayerMoney(player* thePlayer, int amount){
-	thePlayer->money-=amount;
-	cout<<"You lost $"<<amount<<" :("<<endl;
+	if (playerLocation->name=="Las Vegas, NV"){
+		thePlayer->money=0; // lose all money in Vegas
+	}
+	else{
+		thePlayer->money-=amount;
+		cout<<"You lost $"<<amount<<" :("<<endl;
+	}
 }
 
 void Game::restartPlayer(player* thePlayer){//, location* playerLocation){
-	
 	playerLocation = startingLocation;
 	thePlayer->lives -= 1;
 	thePlayer->rollSum = 0;

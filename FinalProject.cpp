@@ -5,7 +5,6 @@
 using namespace std;
 
 int main(){
-	//location* playerLocation = new location;
 	player* thePlayer = new player;
 	thePlayer->rollSum = 0;
 	string userResponse;
@@ -16,13 +15,16 @@ int main(){
 	getline(cin, userResponse);
 	if (userResponse== "yes"){
 		g.playerLocation = g.buildGame();
-		
-		//print out starting city info
+		// print starting city info
+		g.printLocationInfo(g.playerLocation, thePlayer);
+		cout<<"Do you want to continue?"<<endl;
+		getline(cin, userResponse);
 		while (userResponse != "no"){
 			g.increaseMoves();
+			cout<<"in while"<<endl;
 			if (userResponse == "yes"){
 				
-				g.movePlayer(thePlayer);//, rollSum); 
+				g.movePlayer(thePlayer);
 				g.printLocationInfo(g.playerLocation, thePlayer);
 				
 			}

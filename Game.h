@@ -5,7 +5,7 @@
 //using namespace std;
 
 struct player{
-	int money=100;
+	int money=0;
 	int lives=3;
 	int stops=0;
 	int rollSum;
@@ -22,6 +22,7 @@ struct location{
 	bool playerDeath;
 	bool playerLost;
 	int changeInMoney;
+	bool moveBack;
 };
 
 class Game{
@@ -38,7 +39,7 @@ class Game{
 		void restartPlayer(player* thePlayer);//, location* playerLocation);
 		void getPlayerInfo(player* thePlayer);
 		void increaseMoves();
-		
+		void movePlayerBack(player* thePlayer);
 		location* playerLocation; 
 	private:
 		int numberMoves=0;

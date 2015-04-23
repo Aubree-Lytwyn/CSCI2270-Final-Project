@@ -17,15 +17,15 @@ int main(){
 		g.playerLocation = g.buildGame();
 		// print starting city info
 		g.printLocationInfo(g.playerLocation, thePlayer);
-		cout<<"Do you want to continue?"<<endl;
+		cout<<"Do you want to continue? (yes or no)"<<endl;
 		getline(cin, userResponse);
 		while (userResponse != "no"){
 			g.increaseMoves();
-			cout<<"in while"<<endl;
 			if (userResponse == "yes"){
 				
 				g.movePlayer(thePlayer);
 				g.printLocationInfo(g.playerLocation, thePlayer);
+				//g.getLocationInfo(g.playerLocation, thePlayer);
 				
 			}
 			else{

@@ -326,17 +326,14 @@ location* Game::buildGame(){
 	return startingLocation;
 }
 
-
-int Game::rollDie()
-{
+int Game::rollDie(){
 	int roll = 0;
 	roll = (rand()%6 )+1;
 	//increaseMoves(); // this is why it was doubling!
 	return roll;
 }
 
-void Game::movePlayer(player* thePlayer)
-{
+void Game::movePlayer(player* thePlayer){
 	int roll = 0;
 	roll = rollDie();
 	cout<<"Move forward "<<roll<<" spots."<<endl;
@@ -410,29 +407,51 @@ void Game::subtractPlayerMoney(player* thePlayer, int amount){
 }
 
 void Game::restartPlayer(player* thePlayer){
-	cout<<"~~~~~ New Location ~~~~~"<<endl;
-	playerLocation = startingLocation;
-	thePlayer->lives -= 1;
-	thePlayer->rollSum = 0;
-	printLocationInfo(playerLocation, thePlayer); // show that they're at the start
+	
+		cout<<"~~~~~ New Location ~~~~~"<<endl;
+		playerLocation = startingLocation;
+		thePlayer->lives -= 1;
+		thePlayer->rollSum = 0;
+		printLocationInfo(playerLocation, thePlayer); // show that they're at the start
 }
 
 void Game::getPlayerInfo(player* thePlayer){
+	string userResponse;
 	if(thePlayer->lives != 0)
 	{
 		cout<<"It took you "<< numberMoves<< " moves to get to Disneyland."<<endl; 
 		cout<<"You finished the trip with "<<thePlayer->money<<" dollars in your wallet, and "<<thePlayer->lives<<" lives left."<<endl;
-		
-		
 	}
 	else
 	{
+		string userResponse;
+		cout<<"~~~~~ Out of lives ~~~~~"<<endl;
 		cout<<"It took you "<< numberMoves<< " moves before you ran out of lives."<<endl;	
-		cout<<"You ended with "<<thePlayer->money<<" dollars in your wallet."<<endl;	
+		cout<<"You ended with "<<thePlayer->money<<" dollars in your wallet."<<endl;
+		cout<<"Do you want to try again? (yes or no)"<<endl;
+		cin>>userResponse;
+		if(userResponse == "yes")
+		{
+			playAgain = true;
+		}
+	
 	}
 }
 
 void Game::increaseMoves(){
 	numberMoves++;
 	cout<<"~~~~~ Turn #"<<numberMoves<<" ~~~~~"<<endl;
+}
+
+void Game::restartGame(player* thePlayer){
+	playerLocation = startingLocation;
+	thePlayer->lives = 3;
+	thePlayer->rollSum = 0;
+	thePlayer->stops = 0;
+	thePlayer->money = 0;
+	numberMoves = 0;
+	playAgain = false;
+	printLocationInfo(playerLocation, thePlayer);
+	//cout<<"Player Location: "<< playerLocation<<endl;
+	//cout<<"You are on spot 1 out 
 }

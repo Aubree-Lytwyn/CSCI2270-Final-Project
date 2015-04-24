@@ -31,16 +31,19 @@ class Game{
 		~Game();
 		location* buildGame();
 		int rollDie();
-		void movePlayer(/*location* temp,*/ player* thePlayer);//, int rollSum);
+		void movePlayer(player* thePlayer);
 		void printLocationInfo(location* playerLocation, player* thePlayer);
 		void getLocationInfo(location* playerLocation, player* thePlayer);
 		void addPlayerMoney(player* thePlayer, int amount);
 		void subtractPlayerMoney(player* thePlayer, int amount);
-		void restartPlayer(player* thePlayer);//, location* playerLocation);
+		void restartPlayer(player* thePlayer);
 		void getPlayerInfo(player* thePlayer);
 		void increaseMoves();
 		void movePlayerBack(player* thePlayer);
+		void restartGame(player* thePlayer);
 		location* playerLocation; 
+		bool playAgain = false;
+		
 	private:
 		int numberMoves=0;
 		location* startingLocation;

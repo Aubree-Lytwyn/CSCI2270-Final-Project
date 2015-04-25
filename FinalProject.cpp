@@ -17,6 +17,8 @@ int main(){
 		g.playerLocation = g.buildGame();
 		// print starting city info
 		g.printLocationInfo(g.playerLocation, thePlayer);
+		cout<<"Lives: "<<thePlayer->lives<<endl;
+		cout<<"Money: "<<thePlayer->money<<endl;
 		cout<<"Do you want to continue? (yes or no)"<<endl;
 		getline(cin, userResponse);
 		while (userResponse != "no"){

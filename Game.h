@@ -1,4 +1,5 @@
 // Game Header File
+// Authors: Michelle Ferrall and Aubree Lytwyn
 #ifndef GAME_H
 #define GAME_H
 

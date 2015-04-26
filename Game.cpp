@@ -9,7 +9,11 @@ Game::Game(){
 }
 
 // destructor
+<<<<<<< HEAD
 Game::~Game(){	
+=======
+Game::~Game(){
+>>>>>>> 2ab3c36eb4bcc8ec2bf48e80801c0dd0e461e993
 }
 
 /* location* buildGame();
@@ -297,7 +301,7 @@ location* Game::buildGame(){
 	spot22->name = "Santa Monica, CA";
 	spot22->prev = spot21;
 	spot21->next = spot22;
-	spot22->message="You spent a night on the beach.";
+	spot22->message="You spent a night drinking on the beach.";
 	spot22->getMoney=false;
 	spot22->loseMoney=true;
 	spot22->playerDeath=false;
@@ -336,20 +340,27 @@ location* Game::buildGame(){
 
 /* int rollDie();
  * This returns a random number between 1 and 6, as if the user rolled a die.
+<<<<<<< HEAD
  * ex. call: int roll = rollDie();
+=======
+ * int = rollDie();
+>>>>>>> 2ab3c36eb4bcc8ec2bf48e80801c0dd0e461e993
  * pre-condition: srand(time(0)) must be used before the function is called.
  * post-condition: a value to move the player is returned. */
 int Game::rollDie(){
 	int roll = 0;
 	roll = (rand()%6 )+1;
-	//increaseMoves(); // this is why it was doubling!
 	return roll;
 }
 
 /* void movePlayer(player* thePlayer);
  * This function calls the rollDie() function to move the player a number of spots forward on the linked list.
  * The next pointers are utilized.
+<<<<<<< HEAD
  * ex. call: movePlayer(thePlayer);
+=======
+ * g.movePlayer(thePlayer);
+>>>>>>> 2ab3c36eb4bcc8ec2bf48e80801c0dd0e461e993
  * pre-condition: the linked list must be built. A player object must be created.
  * post-condition: the player is located at a new spot.*/
 void Game::movePlayer(player* thePlayer){
@@ -366,7 +377,11 @@ void Game::movePlayer(player* thePlayer){
 /* void movePlayerBack(player* thePlayer);
  * This function moves the player backward a random number of spots. Prev pointer is utilized.
  * It is only called in the class file.
+<<<<<<< HEAD
  * ex. call: movePlayerBack(thePlayer);
+=======
+ * movePlayerBack(thePlayer);
+>>>>>>> 2ab3c36eb4bcc8ec2bf48e80801c0dd0e461e993
  * pre-condition: The linked list must be built and positions must be assigned. A player object must be created.
  * post-condition: The player is located between 1 and 6 spots previous to where they were. */
 void Game::movePlayerBack(player* thePlayer){
@@ -384,7 +399,11 @@ void Game::movePlayerBack(player* thePlayer){
 /* void printLocationInfo(location* playerLocation, player* thePlayer);
  * This function prints the information contained in the player's current location (name, position, message).
  * It also calls the getLocationInfo function.
+<<<<<<< HEAD
  * ex. call: printLocationInfo(playerLocation, thePlayer);
+=======
+ * g.printLocationInfo(playerLocation, thePlayer);
+>>>>>>> 2ab3c36eb4bcc8ec2bf48e80801c0dd0e461e993
  * pre-condition: the linked list must be built and the playerLocation must be current. A player object needs to be created.
  * post-condition: the information on the spot and what happens to the player is displayed. */
 void Game::printLocationInfo(location* playerLocation, player* thePlayer){
@@ -397,10 +416,17 @@ void Game::printLocationInfo(location* playerLocation, player* thePlayer){
 /* void getLocationInfo(location* playerLocation, player* thePlayer);
  * This function is called inside the printLocationInfo function to determine the action that happens on the spot.
  * Other functions are called depending on the information in playerLocation.
+<<<<<<< HEAD
  * ex. call: getLocationInfo(playerLocation, thePlayer);
  * pre-condition: printLocationInfo() must be called. All components of the location struct must be assigned (done when the linked-list is built.)
  * post-condition: the proper functions to change information on thePlayer are called and cout statements displayed. */
 void Game::getLocationInfo(location* playyerLocation, player* thePlayer){
+=======
+ * getLocationInfo(playerLocation, thePlayer);
+ * pre-condition: printLocationInfo() must be called. All components of the location struct must be assigned (done when the linked-list is built.)
+ * post-condition: the proper functions to change information on thePlayer are called and cout statements displayed. */
+void Game::getLocationInfo(location* playerLocation, player* thePlayer){
+>>>>>>> 2ab3c36eb4bcc8ec2bf48e80801c0dd0e461e993
 	if(playerLocation->getMoney==true){
 		addPlayerMoney(thePlayer, playerLocation->changeInMoney);
 	}
@@ -443,6 +469,7 @@ void Game::addPlayerMoney(player* thePlayer, int amount){
 void Game::subtractPlayerMoney(player* thePlayer, int amount){
 	if (playerLocation->name=="Las Vegas, NV"){
 		if(thePlayer->money > 0){
+			cout<<"You went gambling and lost all your money. :("<<endl;
 			thePlayer->money=0; // lose all money in Vegas
 			cout<<"You have "<<thePlayer->money<<" dollars in your wallet."<<endl;
 		}
@@ -470,6 +497,8 @@ void Game::restartPlayer(player* thePlayer){
 		thePlayer->lives -= 1;
 		thePlayer->rollSum = 0;
 		printLocationInfo(playerLocation, thePlayer); // show that they're at the start
+		// somewhere it's printing out the starting location twice...not sure when this happened or why...
+		cout<<"Lives: "<<thePlayer->lives<<endl;
 }
 
 /* void Game::getPlayerInfo(player* thePlayer);

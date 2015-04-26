@@ -11,8 +11,16 @@ Project Summary
 	finishes once the player is at DisneyLand, has run out of lives, or quits the game.
 How to Run
 	To play the game, download the driver, class, and header files. Run the program and
-	follow the instructions in the terminal. Detailed instructions, examples, and a link
-	to the project documentation file will be uploaded after Phase2. 
+	follow the instructions in the terminal. 
+	Make sure Game.cpp, FinalProject.cpp, and Game.h are all in the same location.
+
+	Compile in terminal using: g++ Game.cpp FinalProject.cpp –std=c++11
+	Run in terminal using: ./a.out
+	How to play:
+		Follow the computer’s questions.
+		Answer the questions with yes or no answer.
+		The goal is to get to Disney land with a positive amount of money.
+
 Dependencies
 	There are no dependencies.
 System Requirements

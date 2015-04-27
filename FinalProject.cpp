@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <fstream>
-#include "Game1.h"
+#include "Game.h"
 using namespace std;
 
 int main(){
@@ -24,10 +24,7 @@ int main(){
 		g.printLocationInfo(g.playerLocation, thePlayer);
 		cout<<"Lives: "<<thePlayer->lives<<endl;
 		cout<<"Money: "<<thePlayer->money<<endl;
-<<<<<<< HEAD
 		
-=======
->>>>>>> 2ab3c36eb4bcc8ec2bf48e80801c0dd0e461e993
 		cout<<"Do you want to continue? (yes or no)"<<endl;
 		getline(cin, userResponse);
 		

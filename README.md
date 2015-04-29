@@ -1,5 +1,5 @@
 # CSCI2270-Final-Project
-CSCI 2270 Recitation 10
+Data Structures Final Project
 
 # Project Summary
 	The program is a single-player text game, where the player must get from
@@ -24,7 +24,7 @@ CSCI 2270 Recitation 10
 # Dependencies
 	There are no dependencies.
 # System Requirements
-	This program is designed for Linux and uses the g++ compiler.
+	This program is designed for Linux and uses the g++ compiler and C++11.
 # Group Members
 	Michelle Ferrall and Aubree Lytwyn
 # Contributors 

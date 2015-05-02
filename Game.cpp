@@ -9,7 +9,7 @@ Game::Game(){
 }
 
 // destructor
-Game::~Game(){	
+Game::~Game(){
 }
 
 /* location* buildGame();
@@ -18,7 +18,7 @@ Game::~Game(){
  * pre-conditions: there are no pre-conditions.
  * post-conditions: the double-linked list that mimics a board game is created. */
 location* Game::buildGame(){
-	
+
 	location* spot1 = new location;
 	spot1->position=1;
 	spot1->name="Boulder, CO";
@@ -30,7 +30,7 @@ location* Game::buildGame(){
 	spot1->playerLost=false;
 	spot1->changeInMoney = 0;
 	spot1->moveBack= false;
-	
+
 	location* spot2 = new location;
 	spot2->position=2;
 	spot2->name="en route";
@@ -43,9 +43,9 @@ location* Game::buildGame(){
 	spot2->playerLost=false;
 	spot2->changeInMoney = 100;
 	spot1->moveBack=false;
-	
+
 	startingLocation = spot1;
-	
+
 	location* spot3 = new location;
 	spot3->position=3;
 	spot3->name="Rock Springs, WY";
@@ -58,7 +58,7 @@ location* Game::buildGame(){
 	spot3->playerLost=true;
 	spot3->changeInMoney = 0;
 	spot3->moveBack=false;
-	
+
 	location* spot4 = new location;
 	spot4->position=4;
 	spot4->name="en route";
@@ -71,7 +71,7 @@ location* Game::buildGame(){
 	spot4->playerLost=false;
 	spot4->changeInMoney = 100;
 	spot4->moveBack=false;
-	
+
 	location* spot5 = new location;
 	spot5->position=5;
 	spot5->name="en route";
@@ -84,7 +84,7 @@ location* Game::buildGame(){
 	spot5->playerLost=false;
 	spot5->changeInMoney = 0;
 	spot5->moveBack=true;
-	
+
 	location* spot6 = new location;
 	spot6->position=6;
 	spot6->name="Moab, UT";
@@ -97,7 +97,7 @@ location* Game::buildGame(){
 	spot6->playerLost=false;
 	spot6->changeInMoney = 400;
 	spot6->moveBack=false;
-	
+
 	location* spot7 = new location;
 	spot7->position=7;
 	spot7->name="en route";
@@ -110,7 +110,7 @@ location* Game::buildGame(){
 	spot7->playerLost=false;
 	spot7->changeInMoney = 100;
 	spot7->moveBack=false;
-	
+
 	location* spot8 = new location;
 	spot8->position=8;
 	spot8->name="Lake Powell, UT";
@@ -123,7 +123,7 @@ location* Game::buildGame(){
 	spot8->playerLost=false;
 	spot8->changeInMoney = 500;
 	spot8->moveBack=false;
-	
+
 	location* spot9 = new location;
 	spot9->position=9;
 	spot9->name="en route";
@@ -136,7 +136,7 @@ location* Game::buildGame(){
 	spot9->playerLost=false;
 	spot9->changeInMoney = 0;
 	spot9->moveBack=true;
-	
+
 	location* spot10 = new location;
 	spot10->position=10;
 	spot10->name="en route";
@@ -149,7 +149,7 @@ location* Game::buildGame(){
 	spot10->playerLost=false;
 	spot10->changeInMoney = 100;
 	spot10->moveBack=false;
-	
+
 	location* spot11 = new location;
 	spot11->position=11;
 	spot11->name="Grand Canyon, AZ";
@@ -162,7 +162,7 @@ location* Game::buildGame(){
 	spot11->playerLost=false;
 	spot11->changeInMoney = 0;
 	spot11->moveBack=false;
-	
+
 	location* spot12 = new location;
 	spot12->position = 12;
 	spot12->name = "en route";
@@ -199,7 +199,7 @@ location* Game::buildGame(){
 	spot14->loseMoney=true;
 	spot14->playerDeath=false;
 	spot14->playerLost=false;
-	spot14->changeInMoney = 0; 
+	spot14->changeInMoney = 0;
 	spot14->moveBack=false;
 
 	location* spot15 = new location;
@@ -330,7 +330,7 @@ location* Game::buildGame(){
 	spot24->playerLost=false;
 	spot24->changeInMoney = 0;
 	spot24->moveBack=false;
-	
+
 	return startingLocation;
 }
 
@@ -360,7 +360,7 @@ void Game::movePlayer(player* thePlayer){
 	while((playerLocation->position) != (thePlayer->rollSum) && playerLocation->position<24)
 	{
 		playerLocation = playerLocation->next;
-	}	
+	}
 }
 
 /* void movePlayerBack(player* thePlayer);
@@ -391,7 +391,7 @@ void Game::printLocationInfo(location* playerLocation, player* thePlayer){
 	cout<<"Player Location: "<<playerLocation->name<<endl;
 	cout<<"You are on spot "<<playerLocation->position<<" out of 24."<<endl;
 	cout<<playerLocation->message<<endl;
-	getLocationInfo(playerLocation, thePlayer); 
+	getLocationInfo(playerLocation, thePlayer);
 }
 
 /* void getLocationInfo(location* playerLocation, player* thePlayer);
@@ -438,7 +438,7 @@ void Game::addPlayerMoney(player* thePlayer, int amount){
  * ex. call: subtractPlayerMoney(thePlayer, amount);
  * pre-condition: thePlayer->money must already be created and set.
  * post-condition: The amount of money the player has increases and is printed out.
- * 				 - If player is in vegas money is set to zero 
+ * 				 - If player is in vegas money is set to zero
  * */
 void Game::subtractPlayerMoney(player* thePlayer, int amount){
 	if (playerLocation->name=="Las Vegas, NV"){
@@ -464,11 +464,12 @@ void Game::subtractPlayerMoney(player* thePlayer, int amount){
  * pre-condition: thePlayer->lives and thePlayer->rollSum must already be declared. thePlayer->Death or thePlayer->lost must be true.
  * post-condition: The player has lost one life and is sent back to Boulder. */
 void Game::restartPlayer(player* thePlayer){
-	
+
 		cout<<"~~~~~ New Location ~~~~~"<<endl;
 		playerLocation = startingLocation;
 		thePlayer->lives -= 1;
 		thePlayer->rollSum = 0;
+		thePlayer->money = 0;
 		printLocationInfo(playerLocation, thePlayer); // show that they're at the start
 }
 
@@ -482,22 +483,22 @@ void Game::getPlayerInfo(player* thePlayer){
 	string userResponse;
 	if(thePlayer->lives != 0)
 	{
-		cout<<"It took you "<< numberMoves<< " moves to get to Disneyland."<<endl; 
+		cout<<"It took you "<< numberMoves<< " moves to get to Disneyland."<<endl;
 		cout<<"You finished the trip with "<<thePlayer->money<<" dollars in your wallet, and "<<thePlayer->lives<<" lives left."<<endl;
 	}
 	else
 	{
 		string userResponse;
 		cout<<"~~~~~ Out of lives ~~~~~"<<endl;
-		cout<<"It took you "<< numberMoves<< " moves before you ran out of lives."<<endl;	
+		cout<<"It took you "<< numberMoves<< " moves before you ran out of lives."<<endl;
 		cout<<"You ended with "<<thePlayer->money<<" dollars in your wallet."<<endl;
 		cout<<"Do you want to try again? (yes or no)"<<endl;
-		cin>>userResponse;
+		getline(cin,userResponse);
 		if(userResponse == "yes")
 		{
 			playAgain = true;
 		}
-	
+
 	}
 }
 
@@ -505,7 +506,7 @@ void Game::getPlayerInfo(player* thePlayer){
  * This function is called inside main() if user wants to continue playing.
  * The function will increase the number of moves by one and print out how many turns they have taken.
  * ex. call: g.increaseMoves();
- * pre-condition: Player must roll the die. Also numberMoves must be declared and previously set. 
+ * pre-condition: Player must roll the die. Also numberMoves must be declared and previously set.
  * post-condition: numberMoves is increased by one. */
 void Game::increaseMoves(){
 	numberMoves++;
@@ -528,5 +529,5 @@ void Game::restartGame(player* thePlayer){
 	playAgain = false;
 	printLocationInfo(playerLocation, thePlayer);
 	//cout<<"Player Location: "<< playerLocation<<endl;
-	//cout<<"You are on spot 1 out 
+	//cout<<"You are on spot 1 out
 }
